@@ -117,7 +117,7 @@ void reverse(node*&head)
 
 node* findMiddle(node*head)
 {
-	node*slow=head,*fast=head->next;
+	node*slow=head,*fast=head;
 	while(fast !=NULL and fast->next !=NULL)
 	{
 		fast=fast->next->next;
@@ -195,7 +195,6 @@ if(head2==NULL)
 		head3 = head2;
 		head3->next = mergeLLRec(head1,head2->next);
 	}
-	cout << head3->data<<endl;
 	return head3;
 	
 
@@ -206,16 +205,13 @@ node* mergeSort(node*head)
 		return head;
 
 	node*mid = findMiddle(head);
-	// cout << mid->data<<endl;
-	// node*a=head;
-	// node*b=mid->next;
-	// mid->next=NULL;
-
-	// a=mergeSort(a);
-	// b = mergeSort(b);
-	node *b=mergeSort(mid->next);
+	cout << mid->data<<endl;
+	node*a=head;
+	node*b=mid->next;
 	mid->next=NULL;
-	node*a=mergeSort(head);
+
+	a=mergeSort(a);
+	b = mergeSort(b);
 	node *c = mergeLLRec(a,b);
 	return c;
 
@@ -226,7 +222,7 @@ int main()
 	node* head=NULL;
 	cin>>head;
 	cout<<head;
-	head = mergeSort(head);
+	mergeSort(head);
 	cout << head;
 	
 	return 0;

@@ -73,8 +73,8 @@ node* createTree(int *in, int * pre, int s,int e)
 }
 int main()
 {
-	int in[]={1,3,5,6,7,8};
-	int pre[] = {5,3,1,7,6,8};
+	int in[]={3,2,8,4,1,6,7,5};
+	int pre[] = {1,2,3,4,8,5,6,7};
 	int n=sizeof(pre)/sizeof(int);
 	node * root =createTree(in,pre,0,n-1);
 	BFS(root);

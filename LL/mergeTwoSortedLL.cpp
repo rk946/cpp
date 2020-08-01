@@ -207,8 +207,7 @@ int main()
 	cout<<head;
 	cout<<head2;
 	node * head3 = mergeLLRec(head,head2);
-	print(head3);
-	 // << head3;
+	cout << head3;
 	
 	return 0;
 }

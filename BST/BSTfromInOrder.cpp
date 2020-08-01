@@ -1,5 +1,6 @@
 #include<iostream>
 #include<queue>
+#include<algorithm>
 using namespace std;
 // template<typename T>
 class node{
@@ -127,20 +128,36 @@ LinkedList flattenBST(node *root)
 
 
 }
+node * buildTreeFromPreandIn(vector<int> in, int s, int e)
+{
+
+}
+
+int indexOf(int key, std::vector<int> in)
+{
+	for(int i=0;i<in.size();i++)
+	{
+		if(in[i]==key)
+			return i;
+	}
+	return -1;
+}
+node * buildBSTFromPre(vector<int> pre)
+{
+	vector<int> in = pre;
+	sort(in.begin(),in.end());
+	node * root = new node(pre[0]);
+	root->left = buildTreeFromPreandIn(in,0,indexOf(pre[0],in));
+	root->right = buildTreeFromPreandIn(in,indexOf(pre[0],in),pre.size());
+	
+
+
+
+}
 int main()
 {
-	node *root = buildBST();
-	// BFSwithNewLine(root);
-	cout << endl;
-	// inOrderPrint(root);
-	cout << endl;
-	LinkedList l = flattenBST(root);
-	node * temp = l.head;
-	while(temp!=NULL)
-	{
-		cout << temp->data<< "-->";
-		temp=temp->right;
-	}
-	cout<<endl;
+	vector<int> pre{5,3,1,7,6,8};
+	node * root = buildBSTFromPre(pre);
+
 	return 0;
 }
