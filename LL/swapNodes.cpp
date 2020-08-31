@@ -102,28 +102,68 @@ ostream& operator<<(ostream &os, node*head)
 	print(head);
 	return os;
 }
+void swapNodes(node*head, int key1, int key2)
+{
+	node*temp=head,*prev1=NULL,*prev2=NULL,*node1=NULL,*node2=NULL,*prev=NULL;
+	while(temp!=NULL and node2==NULL)
+	{
+		if(node1 == NULL and (temp->data==key1 || temp->data == key2))
+		{
+			prev1=prev;
+			node1 = temp;
+		}
+		else if(node1!=NULL and (temp->data==key1 || temp->data == key2))
+		{
+			prev2=prev;
+			node2=temp;
+		}
+		if(node1!=NULL and node2!=NULL)
+		{
+			break;
+		}
+		prev=temp;
+		temp=temp->next;
+	}
+	cout << "node 1 : "<<node1 <<", node2 : "<<node2<<endl;
+	if(node1==head)
+	{
+		head = node2;
+		node * temp2 = node2->next;
+		node2->next = node1->next;
+		prev2->next = node1;
+		node1->next = temp2;
+	}
+	if(node2==head)
+	{
+		head = node1;
+		node * temp2 = node1->next;
+		node1->next = node2->next;
+		prev1->next = node2;
+		node2->next = temp2;
+
+	}
+	if(node1!=NULL and node2!=NULL)
+	{
+		prev1->next = node2;
+		node * temp2 = node1->next;
+		node1->next = node2->next;
+		node2->next = temp2;
+		prev2->next=node1;
+	}
+
+}
 int main()
 {
 	node* head=NULL;
 	insertAtHead(head,3);
-	print(head);
 	insertAtHead(head,4);
 	insertAtHead(head,5);
 	insertAtHead(head,6);
 	insertAtHead(head,7);
 	insertAtHead(head,8);
+	insertAtHead(head,9);
 	print(head);
-	insertInMiddle(head,0,6);
+	swapNodes(head,9,3);
 	print(head);
-	insertAtTail(head,55);
-	print(head);
-	cout << size(head)<<endl;
-	node*head2=NULL;
-	buildll(head2);
-	print(head2);
-	node*head3=NULL,*head4=NULL;
-	cin >> head3>>head4;
-	cout <<head3<<endl <<head4;
-
 	return 0;
 }

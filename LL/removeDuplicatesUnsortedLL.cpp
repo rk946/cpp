@@ -1,4 +1,5 @@
 #include<iostream>
+#include<unordered_set>
 using namespace std;
 
 class node{
@@ -102,28 +103,59 @@ ostream& operator<<(ostream &os, node*head)
 	print(head);
 	return os;
 }
+void removeDuplicates(node *head)
+{
+	node*temp=head;
+	while(temp!=NULL and temp->next!=NULL)
+	{
+		node * temp2 = temp->next;
+		if(temp->data == temp2->data)
+		{
+			temp->next = temp2->next;
+			free(temp2);
+		}
+		temp = temp->next;
+	}
+}
+void removeDuplicatesUnsortedLL(node *head)
+{
+	unordered_set<int> visited;
+	node * temp = head;
+	node*prev=NULL;
+	while(temp!=NULL)
+	{
+		
+		
+		if(visited.find(temp->data)!=visited.end())
+		{
+				prev->next = temp->next;
+				free(temp);
+				
+		}
+		else
+		{
+			visited.insert(temp->data);
+			prev=temp;
+			
+		}
+		temp = prev->next;		
+
+	}
+}
 int main()
 {
 	node* head=NULL;
 	insertAtHead(head,3);
-	print(head);
-	insertAtHead(head,4);
+	// print(head);
+	insertAtHead(head,10);
 	insertAtHead(head,5);
-	insertAtHead(head,6);
 	insertAtHead(head,7);
+	insertAtHead(head,3);
 	insertAtHead(head,8);
+	insertAtHead(head,9);
+	insertAtHead(head,3);
 	print(head);
-	insertInMiddle(head,0,6);
+	removeDuplicatesUnsortedLL(head);
 	print(head);
-	insertAtTail(head,55);
-	print(head);
-	cout << size(head)<<endl;
-	node*head2=NULL;
-	buildll(head2);
-	print(head2);
-	node*head3=NULL,*head4=NULL;
-	cin >> head3>>head4;
-	cout <<head3<<endl <<head4;
-
 	return 0;
 }

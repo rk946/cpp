@@ -1,4 +1,5 @@
 #include<iostream>
+#include<stack>
 using namespace std;
 
 class node{
@@ -102,28 +103,63 @@ ostream& operator<<(ostream &os, node*head)
 	print(head);
 	return os;
 }
+int getMiddle(node *head)
+{
+	if(head==NULL || head->next == NULL)
+	return 0;	
+	node*slow=head;
+	node*fast=head->next;
+	int i=0;
+	while(fast!=NULL or fast->next!=NULL)
+	{
+		slow = slow->next;
+		fast = fast->next->next;
+		i++;
+	}
+	return i;
+
+
+
+}
+bool checkPalindrome(node * head)
+{
+	stack<int> s;
+	node*temp=head;
+	while(temp!=NULL)
+	{
+		s.push(temp->data);
+		temp=temp->next;
+	}
+
+	temp=head;
+	while(temp!=NULL)
+	{
+		if(s.top() != temp->data)
+			break;
+		s.pop();
+		temp=temp->next;
+
+	}
+	if(temp!=NULL)
+		return false;
+	return true;
+
+	
+
+}
 int main()
 {
 	node* head=NULL;
 	insertAtHead(head,3);
-	print(head);
+	// print(head);
 	insertAtHead(head,4);
 	insertAtHead(head,5);
 	insertAtHead(head,6);
-	insertAtHead(head,7);
+	insertAtHead(head,5);
+	insertAtHead(head,4);
 	insertAtHead(head,8);
 	print(head);
-	insertInMiddle(head,0,6);
-	print(head);
-	insertAtTail(head,55);
-	print(head);
-	cout << size(head)<<endl;
-	node*head2=NULL;
-	buildll(head2);
-	print(head2);
-	node*head3=NULL,*head4=NULL;
-	cin >> head3>>head4;
-	cout <<head3<<endl <<head4;
+	cout << checkPalindrome(head);
 
 	return 0;
 }
