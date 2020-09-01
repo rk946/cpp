@@ -32,13 +32,10 @@ int sumOfLeftLeaves(TreeNode* root) {
 	int res=0;
 	if(root==NULL)
 		return 0;
-	if(root->left==nullptr)
-	{ 
-		if(root->right==nullptr)
+	if(root->left==nullptr and root->right == nullptr)
 			return 0;
-		else
-			res+=root->left->val;
-	}
+	
+
 		
 
         

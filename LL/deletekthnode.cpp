@@ -1,6 +1,4 @@
 #include<iostream>
-#include<vector>
-#include<bits/stdc++.h>
 using namespace std;
 
 class node{
@@ -33,6 +31,7 @@ int size(node*head)
 	}
 	return len;
 }
+
 void insertAtTail(node*&head,int data)
 {
 	if(head==NULL)
@@ -48,7 +47,6 @@ void insertAtTail(node*&head,int data)
 	temp->next = new node(data);
 	
 }
-
 void insertInMiddle(node*&head, int data, int p)
 {
 	if(head==NULL)
@@ -72,6 +70,7 @@ void insertInMiddle(node*&head, int data, int p)
 	temp->next = temp2;
 
 }
+
 void print(node *head)
 {
 	while(head!=NULL)
@@ -104,16 +103,42 @@ ostream& operator<<(ostream &os, node*head)
 	print(head);
 	return os;
 }
+void deleteElement(node*head,int k)
+{
+	if(head==NULL)
+		return;
+	int i=0;
+	node*temp = head;
+	while(i<(k-1) and temp!=NULL)
+	{
+		temp=temp->next;
+		i++;
+	}
+
+	if(temp==NULL)
+		return;
+	if(temp->next==NULL)
+		return;
+	node*del = temp->next;
+	temp->next = temp->next->next;
+	delete del;
+	
+}
+
 int main()
 {
 	node* head=NULL;
 	insertAtHead(head,3);
-	print(head);
+	// print(head);
 	insertAtHead(head,4);
 	insertAtHead(head,5);
 	insertAtHead(head,6);
 	insertAtHead(head,7);
 	insertAtHead(head,8);
+	print(head);
+	int i=0;
+	cin>>i;
+	deleteElement(head,i);
 	print(head);
 
 	return 0;
