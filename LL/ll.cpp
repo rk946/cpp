@@ -106,24 +106,12 @@ int main()
 {
 	node* head=NULL;
 	insertAtHead(head,3);
-	print(head);
 	insertAtHead(head,4);
 	insertAtHead(head,5);
 	insertAtHead(head,6);
 	insertAtHead(head,7);
 	insertAtHead(head,8);
 	print(head);
-	insertInMiddle(head,0,6);
-	print(head);
-	insertAtTail(head,55);
-	print(head);
-	cout << size(head)<<endl;
-	node*head2=NULL;
-	buildll(head2);
-	print(head2);
-	node*head3=NULL,*head4=NULL;
-	cin >> head3>>head4;
-	cout <<head3<<endl <<head4;
-
+	
 	return 0;
 }

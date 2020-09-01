@@ -102,52 +102,31 @@ ostream& operator<<(ostream &os, node*head)
 	print(head);
 	return os;
 }
-void swapNodes(node*&head, int key1, int key2)
+
+node* pairwiseSwap(node*head)
 {
-	node*temp=head,*prev1=NULL,*prev2=NULL,*node1=head,*node2=head,*prev=NULL;
-	if(key1 == key2)
-		return;
-	while(node1 and node1->data!=key1)
-	{
-		prev1 = node1;
-		node1 = node1->next;
-	}
-
-	while(node2 and node2->data!=key2)
-	{
-		prev2 = node2;
-		node2 = node2->next;
-	}
-	if(node1==NULL || node2 == NULL)
-		return;
-
-	if(node1==head)
-		head = node2;
-	else
-		prev1->next = node2;
-
-	if(node2==head)
-		head = node1;
-	else
-		prev2->next = node1;
-
-	node *temp3= node1->next;
-	node1->next = node2->next;
-	node2->next = temp3;
+	
+	if(head==NULL or head->next==NULL)
+		return head;
+	node*newHead=head->next;
+	node*remaining = head->next->next;
+	newHead->next = head;
+	head->next = pairwiseSwap(remaining);
+	return newHead;
 
 }
 int main()
 {
 	node* head=NULL;
-	insertAtHead(head,3);
-	insertAtHead(head,4);
 	insertAtHead(head,5);
-	insertAtHead(head,6);
-	insertAtHead(head,7);
-	insertAtHead(head,8);
-	insertAtHead(head,9);
+	insertAtHead(head,4);
+	insertAtHead(head,3);
+	insertAtHead(head,2);
+	insertAtHead(head,1);
+	// insertAtHead(head,8);
 	print(head);
-	swapNodes(head,3,9);
-	print(head);
+	head=pairwiseSwap(head);
+	print(head);	
+
 	return 0;
 }
