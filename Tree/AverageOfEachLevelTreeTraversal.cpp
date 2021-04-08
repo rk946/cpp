@@ -109,15 +109,50 @@ void BFSwithNewLine(node *root)
 	while(!q.empty())
 	{
 		node * f = q.front();
+		q.pop();
 		if(f==NULL)
 		{
 			cout << endl;
-			q.pop();
+			// q.pop();
 			if(!q.empty())
 				q.push(NULL);
 		}
 		else{
 			cout << f->data << " ";
+			// q.pop();
+if(f->left!=NULL)
+			q.push(f->left);
+		if(f->right!=NULL)
+			q.push(f->right);
+		}
+
+
+	}
+}
+void Average(node *root)
+{
+	queue<node*> q;
+	q.push(root);
+	q.push(NULL);
+	int res=0,count=0;
+	while(!q.empty())
+	{
+		node * f = q.front();
+		if(f==NULL)
+		{
+			cout << endl;
+			q.pop();
+			cout << "average : "<<res/count<<"\n";
+			res=0;
+			count=0;
+			
+			if(!q.empty())
+				q.push(NULL);
+		}
+		else{
+			cout << f->data << " ";
+			res+=f->data;
+			count++;
 			q.pop();
 if(f->left!=NULL)
 			q.push(f->left);
@@ -144,5 +179,6 @@ int main()
 	BFS(root);
 	cout<<endl;
 	BFSwithNewLine(root);
+	Average(root);
 	return 0;
 }

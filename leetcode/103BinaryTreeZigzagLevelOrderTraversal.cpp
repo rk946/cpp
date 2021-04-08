@@ -28,21 +28,9 @@ return its zigzag level order traversal as:
       TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
   };
 
-  void reverseLevel(vector<int> &level)
-  {
-  	int n = level.size();
-  	int l=0;
-  	if(n&1)
-  		l= n/2;
-  	else
-  		l = (n/2)-1;
-  	for(int i=0;i<=l;i++)
-  	{
-  		swap(level[i],level[n-i-1]);
-  	}
 
 
-  }
+
   vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
   		vector<vector<int>>res;
   		queue<TreeNode*> q;
@@ -59,12 +47,7 @@ return its zigzag level order traversal as:
   				if(i&1)
   					reverseLevel(level);
   				res.push_back(level);
-  				/*int length = level.size();
- 				for(int j=0;j<length;j++)
- 				{
- 					cout << level[j] << " ";
- 				}*/
- 				// cout << endl;
+  				
   				level.clear();
   				i++;
   				if(!q.empty())
@@ -74,21 +57,7 @@ return its zigzag level order traversal as:
   			else
   			{
   				level.push_back(temp->val);
-/*  				if(i&1)
-  				{
 
-  					if(temp->right!=NULL)
-  						q.push(temp->right);
-  					if(temp->left!=NULL)
-  						q.push(temp->left);
-  				}
-  				else
-  				{
-  					if(temp->left!=NULL)
-  						q.push(temp->left);
-  					if(temp->right!=NULL)
-  						q.push(temp->right);	
-  				}*/
   				if(temp->left!=NULL)
   						q.push(temp->left);
   				if(temp->right!=NULL)
