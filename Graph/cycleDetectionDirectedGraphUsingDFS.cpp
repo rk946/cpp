@@ -32,7 +32,7 @@ public:
 		instack[node] = true;
 		for(T neighbor: adjList[node])
 		{
-			if(!visited[neighbor] and isCyclePresentHelper(neighbor,visited,instack) or instack[neighbor])
+			if((!visited[neighbor] and isCyclePresentHelper(neighbor,visited,instack)) or instack[neighbor])
 				return true;
 		}
 		instack[node]=false;

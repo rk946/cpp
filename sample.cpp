@@ -1,43 +1,58 @@
-#include<iostream>
-#include<vector>
-#include<algorithm>
-#include<bits/stdc++.h>
-using namespace std;
-
-  int countPrimes(int n) {
-        if(n==0 or n==1)
-            return 0;
-        bool prime[n + 1];
-    memset(prime, true, sizeof(prime));
- 
-    for (int p = 2; p * p <= n; p++)
-    {
-        // If prime[p] is not changed,
-        // then it is a prime
-        if (prime[p] == true)
+    #include <iostream>  
+    #include <set> 
+    #include<bits/stdc++.h> 
+      
+    using namespace std;  
+    
+ vector<string> findAndReplacePattern(vector<string>& words, string pattern) {
+        unordered_map<char,char> m;
+        unordered_map<char,char> m1;
+        int n = words.size();
+        int len = pattern.length();
+        vector<string> ans;
+        for(string s:words)
         {
-            // Update all multiples
-            // of p greater than or
-            // equal to the square of it
-            // numbers which are multiple
-            // of p and are less than p^2
-            // are already been marked.
-            for (int i = p * p; i <= n; i += p)
-                prime[i] = false;
+            if(s.length()!=len)
+                continue;
+            else
+            {
+                m.clear();
+                m1.clear();
+                bool flag=false;
+                // s.clear();
+                for(int i=0;i<len;i++)
+                {
+                    char c = pattern[i];
+                    if(m.count(c)==0 and m1.count(s[i])==0)
+                    {
+                        m[c]=s[i];
+                        m1[s[i]] = c;
+                    }
+                    else if(s[i]!=m[c])
+                    {
+                        flag=true;
+                        break;
+                    }
+                        
+                        
+                }
+                if(!flag)
+                    ans.push_back(s);
+                    
+            }
+            
         }
-    }
-    int count =0;
-     for (int p = 2; p <= n; p++)
-        if (prime[p])
-            count++;
-        return count;
+        return ans;
         
     }
- 
-int main()
-{
-    cout << countPrimes(5000000);
 
-	return 0;
-
-}
+    int main()  
+    {  
+     string s1 = "3";
+     string s2="39";
+     if(s1<s2)
+      cout <<"s1 is smaller";
+    else
+      cout << "s2 is smaller";
+     return 0;
+    }  
