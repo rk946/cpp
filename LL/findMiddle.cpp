@@ -130,7 +130,7 @@ int main()
 	node* head=NULL;
 	cin>>head;
 	cout<<head;
-	node * res = findMiddle(head);
+	node * res = findMiddle(insertAtHead);
 	cout << res->data;
 	
 	return 0;
