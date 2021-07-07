@@ -71,6 +71,8 @@ node* createTree(int *in, int * pre, int s,int e)
 	root->right = createTree(in,pre,index+1,e);
 	return root;
 }
+
+
 vector<int> res;
 int max_level=-1;
 void helper(node*root,int level)
@@ -86,12 +88,12 @@ void helper(node*root,int level)
 	helper(root->left,level+1);
 	helper(root->right,level+1);
 }
-void rightViewOfTree(node*root)
+
+void leftViewOfTree(node*root)
 {
 	helper(root,0);
-
-
 }
+
 int main()
 {
 	int in[]={3,2,8,4,1,6,7,5};
@@ -99,7 +101,7 @@ int main()
 	int n=sizeof(pre)/sizeof(int);
 	node * root =createTree(in,pre,0,n-1);
 	BFS(root);
-	rightViewOfTree(root);
+	leftViewOfTree(root);
 	// cout << res.size();
 	for(int i=0;i<res.size();i++)
 		cout << res[i];

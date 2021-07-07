@@ -1,7 +1,8 @@
 #include<iostream>
 #include<queue>
 using namespace std;
-
+//The diameter of a tree (sometimes called the width)
+// is the number of nodes on the longest path between two end nodes.
 class node{
 public:
 	int data;
@@ -60,7 +61,7 @@ int height(node *root)
 {
 	if(root==NULL)
 		return 0;
-	return max(height(root->left),height(root->right))+1;
+	return 1+max(height(root->left),height(root->right));
 }
 
 void printKthLevel(node*root, int k)
@@ -140,6 +141,9 @@ int sum(node *root)
 		return 0;
 	return root->data+sum(root->left)+sum(root->right);
 }
+
+//The diameter of a tree (sometimes called the width)
+// is the number of nodes on the longest path between two end nodes.
 
 int diameter(node *root){
 	if(root==NULL)
