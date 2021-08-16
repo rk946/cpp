@@ -119,10 +119,10 @@ void BFSwithNewLine(node *root)
 		else{
 			cout << f->data << " ";
 			q.pop();
-if(f->left!=NULL)
-			q.push(f->left);
-		if(f->right!=NULL)
-			q.push(f->right);
+			if(f->left!=NULL)
+				q.push(f->left);
+			if(f->right!=NULL)
+				q.push(f->right);
 		}
 
 

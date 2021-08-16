@@ -1,4 +1,6 @@
 #include<iostream>
+#include<vector>
+#include<bits/stdc++.h>
 using namespace std;
 
 class node{
@@ -46,6 +48,10 @@ void insertAtTail(node*&head,int data)
 	temp->next = new node(data);
 	
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> laptop
 void insertInMiddle(node*&head, int data, int p)
 {
 	if(head==NULL)
@@ -69,7 +75,10 @@ void insertInMiddle(node*&head, int data, int p)
 	temp->next = temp2;
 
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> laptop
 void print(node *head)
 {
 	while(head!=NULL)
@@ -112,6 +121,10 @@ int main()
 	insertAtHead(head,7);
 	insertAtHead(head,8);
 	print(head);
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> laptop
 	return 0;
 }

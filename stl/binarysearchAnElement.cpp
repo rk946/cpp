@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
 int key=3;
-int a[] = {1,2,3,3,3,3,4,5};
+int a[] = {1,2,4,5};
 int n=sizeof(a)/sizeof(a[0]);
 	auto b=binary_search(a,a+n,key);
 	cout<<b<<endl;

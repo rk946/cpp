@@ -43,7 +43,7 @@ int main()
 	cin>>m;
 	cout << "Enter number of columns";
 	cin>>n;
-	int val = 1;
+	int val = 1;startCol
 	int a[1000][1000]={0};
 	cout <<"Original array " <<endl;
 	for(int i=0;i<m;i++)
