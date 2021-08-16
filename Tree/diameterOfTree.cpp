@@ -150,8 +150,8 @@ int diameter(node *root){
 		return 0;
 	int d1,d2,d3;
 	d1= height(root->left)+height(root->right);
-	d2 = diameter(root->left);
-	d3=diameter(root->right);
+	d2= diameter(root->left);
+	d3= diameter(root->right);
 	return max(max(d1,d2),d3);
 
 

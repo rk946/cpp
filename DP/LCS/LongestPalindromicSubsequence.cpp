@@ -38,7 +38,7 @@ int LCS(string X, string Y, int m, int n)
 }
 int main()
 {
-	string X="agbcba";
+	string X="bbcbaba";
 	string Y=X;
 	reverse(Y.begin(), Y.end());
 	cout << LCS(X,Y,X.length(),Y.length());

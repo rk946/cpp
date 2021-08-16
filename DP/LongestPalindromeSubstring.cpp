@@ -2,40 +2,52 @@
 
 using namespace std;
 
+
+
 string longestPalindrome(string s) {
 	int n = s.length();
 	int maxLength=1;
-	int dp[n][n];
+	bool dp[n][n];
+	int start = 0;
 	//Initialization
 	for(int i=0;i<n;i++)
-		dp[i][i]=1;
-	for(int i=0;i<n;i++)
+		dp[i][i]=true;
+	for(int i=0;i<n-1;i++)
 	{
 		if(s[i]==s[i+1])
 		{
-			dp[i][i+1]=1;
+			dp[i][i+1]=true;
 			maxLength=max(maxLength,2);
+			start = i;
 		}
 		else
-			dp[i][i+1]=0;
+			dp[i][i+1]=false;
 	}
-	int j=2;
-	for(int i=0;i<n;i++)
-	{
-		if(s[i]==s[n-i-1] and dp[i+1][i+j-1]==1)
-		{
-			dp[i][i+j]=1;
-			maxLength=max(maxLength,);
+	
+	for(int k=3;k<=n;k++){
+		for(int i=0;i<n-k+1;i++){
+			int j = i+k-1;
+			if(s[i]==s[j] and dp[i+1][j-1]){
+				dp[i][j] = true;
+				if(k>maxLength){
+					start = i;
+					maxLength=k;
+				}
+			}
+			else
+				dp[i][j]=false;
 		}
-		else
-			dp[i][i+j]=0;
 	}
+
+	return s.substr(start,maxLength);
+
 
 
 }
 
 int main()
 {
-	string s = "aaaabba";
+	string s = "aacabba";
+	cout << longestPalindrome(s);
 	return 0;
 }

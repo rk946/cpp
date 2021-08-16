@@ -1,28 +1,19 @@
-    #include <iostream>  
-    #include <set> 
-    #include<bits/stdc++.h> 
-      
-    using namespace std;  
-    long long M=1000000009;
-  long long expo(long long base, int power){
-  	cout << base << " "<<power <<endl;
-        if(power==1)
-            return base;
-        if(power&1)
-            return base * expo((base*base)%M, power/2)%M;
-        else{
-            return expo((base*base)%M, power/2)%M;
-        }
-    }
-    
-    int main()  
-    {
-    	long long a = expo(20,2);
-    	cout << a;
 
-    	// a^b mod c
+#include<iostream>
+using namespace std;
+  
 
+void print(int *x){
+  cout << *x;
 
-      	// cout << (3355443200000000%1000000009 * 100000000000000000%1000000009)%1000000009
-        return 0;
-    }  
+}
+int main(void)
+{ 
+  const int* a;
+  int b = 15;
+  a=&b;
+  int*temp = const_cast<int*>(a);
+  print(temp);
+
+  return 0;
+}
